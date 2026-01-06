@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 export function Footer() {
@@ -39,9 +38,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <Link to="/" className="nav-item flex items-center gap-2 mb-4">
+            <a href="/" className="nav-item flex items-center gap-2 mb-4">
               <img src="/logo.png" alt="Law4Minor Logo" className="h-12 w-auto" />
-            </Link>
+            </a>
 			<h4 className="font-serif text-lg font-semibold mb-4">Law4Minor</h4>
             <p className="text-white/70 text-sm leading-relaxed mb-4">
               Educating youth about laws and legal rights through community engagement and accessible resources.
@@ -68,12 +67,12 @@ export function Footer() {
             <ul className="flex flex-col gap-4">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
+                  <a
+                    href={link.path}
                     className="text-white/70 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -85,12 +84,12 @@ export function Footer() {
             <ul className="flex flex-col gap-4">
               {legalLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
+                  <a
+                    href={link.path}
                     className="text-white/70 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

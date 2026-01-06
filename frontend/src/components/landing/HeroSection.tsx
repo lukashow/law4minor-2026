@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { createTimeline } from 'animejs';
 
 export function HeroSection() {
@@ -52,7 +51,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="container relative z-10 pt-48 md:pt-24 pb-12">
+      <div className="container relative z-10 pt-48 md:pt-24 pb-12 px-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
@@ -71,12 +70,12 @@ export function HeroSection() {
             </p>
 
             <div className="hero-buttons flex flex-wrap gap-4 mb-12 opacity-0">
-              <Link to="/about" className="btn btn-primary">
+              <a href="/about" className="btn btn-primary">
                 Learn More About Us
-              </Link>
-              <Link to="/articles" className="btn btn-secondary">
+              </a>
+              <a href="/articles" className="btn btn-secondary">
                 Explore Articles
-              </Link>
+              </a>
             </div>
 
             {/* Features */}

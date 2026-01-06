@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 
 interface Article {
@@ -15,25 +14,13 @@ interface Article {
   };
 }
 
-export function ArticlesSection() {
-  const [articles, setArticles] = useState<Article[]>([]);
+interface ArticlesSectionProps {
+  articles?: Article[];
+}
+
+export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const response = await fetch('http://localhost:3001/api/public/articles?perPage=3');
-        if (response.ok) {
-          const data = await response.json();
-          setArticles(data.items || []);
-        }
-      } catch (err) {
-        console.error('Failed to fetch articles:', err);
-      }
-    }
-    fetchArticles();
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,7 +52,7 @@ export function ArticlesSection() {
   const getImageUrl = (url?: string) => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
-    return `http://localhost:3001${url}`;
+    return url; // Relative paths work at runtime
   };
 
   const formatDate = (dateStr: string) => {
@@ -92,15 +79,15 @@ export function ArticlesSection() {
               Stay informed with our latest legal insights and resources.
             </p>
           </div>
-          <Link
-            to="/articles"
+          <a
+            href="/articles"
             className="btn btn-outline group w-full md:w-auto justify-start md:justify-center px-0 md:px-4"
           >
             View All Articles
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </Link>
+          </a>
         </div>
 
         {articles.length === 0 ? (
@@ -108,9 +95,9 @@ export function ArticlesSection() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article) => (
-              <Link
+              <a
                 key={article.id}
-                to={`/articles/${article.slug}`}
+                href={`/articles/${article.slug}`}
                 className="article-card group opacity-0"
               >
                 <div className="relative overflow-hidden rounded-2xl mb-4">
@@ -137,7 +124,7 @@ export function ArticlesSection() {
                   {article.title}
                 </h3>
                 <p className="text-sm text-gray-500 mt-2">{formatDate(article.createdAt)}</p>
-              </Link>
+              </a>
             ))}
           </div>
         )}

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { animate, stagger } from 'animejs';
 
 const services = [
@@ -96,9 +95,9 @@ export function ServicesSection() {
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/articles" className="btn btn-primary">
+          <a href="/articles" className="btn btn-primary">
             View All Resources
-          </Link>
+          </a>
         </div>
       </div>
     </section>

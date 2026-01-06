@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { animate, stagger } from 'animejs';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState('/');
+
+  useEffect(() => {
+    // Get current path for client-side
+    if (typeof window !== 'undefined') {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,17 +33,9 @@ export function Navbar() {
     });
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => currentPath === path;
 
-  // Paths where the navbar should have dark text by default (because they have light backgrounds)
-  // Home and Events usually have dark hero sections (White text)
-  // Articles, Contact, Privacy, Terms usually have light/white headers (Dark text)
-  const isLightPage = ['/articles', '/contact', '/privacy', '/terms', '/events'].some(path => location.pathname.startsWith(path));
-  
-  // If scrolled, always use scrolled style (Dark BG + White Text)
-  // If not scrolled:
-  //   - Light Page -> Dark Text
-  //   - Dark Page (Home/Evt) -> White Text
+  const isLightPage = ['/articles', '/contact', '/privacy', '/terms', '/events'].some(path => currentPath.startsWith(path));
   const shouldUseDarkText = !isScrolled && isLightPage;
 
   const navLinks = [
@@ -57,23 +55,20 @@ export function Navbar() {
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="nav-item flex items-center gap-2">
-          {/* Use filter invert if we need dark logo, or assume logo is visible enough or switch src */}
+        <a href="/" className="nav-item flex items-center gap-2">
           <img 
             src="/logo.png" 
             alt="Law4Minor Logo" 
             className={`h-10 w-auto transition-all duration-300`} 
-            // Note: brightness-0 invert makes it white. brightness-0 invert-0 makes it black.
-            // Assuming logo.png is essentially a shape that works well monochromatically.
           />
-        </Link>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.path}
-              to={link.path}
+              href={link.path}
               className={`nav-item text-sm font-medium transition-colors ${
                 isActive(link.path)
                   ? 'text-[var(--color-primary)]'
@@ -83,18 +78,18 @@ export function Navbar() {
               }`}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
         {/* CTA Button */}
         <div className="hidden lg:flex items-center gap-4">
-          <Link 
-            to="/contact" 
+          <a 
+            href="/contact" 
             className={`nav-item btn ${shouldUseDarkText && !isScrolled ? 'btn-outline' : 'btn-primary'}`}
           >
             Get in Touch
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -136,9 +131,9 @@ export function Navbar() {
       >
         <nav className="container py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.path}
-              to={link.path}
+              href={link.path}
               className={`text-sm font-medium py-2 transition-colors ${
                 isActive(link.path)
                   ? 'text-[var(--color-primary)]'
@@ -147,15 +142,15 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
-          <Link
-            to="/contact"
+          <a
+            href="/contact"
             className="btn btn-primary w-full"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Get in Touch
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

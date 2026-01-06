@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export function CTASection() {
   return (
     <section className="section relative overflow-hidden flex items-center min-h-[500px]">
@@ -30,12 +28,12 @@ export function CTASection() {
             Join thousands of youth who are learning about their legal rights. <br/>Browse our articles, follow us on social media, or get in touch.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/articles" className="btn btn-primary">
+            <a href="/articles" className="btn btn-primary">
               Browse Articles
-            </Link>
-            <Link to="/contact" className="btn bg-transparent text-white border border-white/30 hover:bg-white hover:text-[var(--color-accent)] backdrop-blur-sm transition-all">
+            </a>
+            <a href="/contact" className="btn bg-transparent text-white border border-white/30 hover:bg-white hover:text-[var(--color-accent)] backdrop-blur-sm transition-all">
               Contact Us
-            </Link>
+            </a>
           </div>
         </div>
       </div>
