@@ -64,12 +64,12 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section bg-[var(--color-primary)]">
+    <section ref={sectionRef} className="section bg-[var(--color-accent)]">
       <div className="container">
         <div className="text-center mb-12">
-          <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">Our Programs & Resources</span>
+          <span className="text-[var(--color-primary-light)] text-sm font-medium uppercase tracking-wider">Our Programs & Resources</span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">
-            Legal Solutions For<br />All Situations.
+            Bringing the law to you<br />in engaging way.
           </h2>
           <p className="text-white/90 w-full">
             At Law4Minor, you can understand more about the law with our quick summaries, <br/>long articles, and informative videos.
@@ -80,15 +80,15 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card group bg-white/20 hover:bg-white/40 rounded-2xl p-8 transition-all duration-300 opacity-0"
+              className="service-card group bg-white/5 hover:bg-white/10 rounded-2xl p-8 transition-all duration-300 opacity-0"
             >
-              <div className="w-16 h-16 rounded-xl bg-[var(--color-accent)]/20 group-hover:bg-[var(--color-accent)] flex items-center justify-center text-[var(--color-accent)] group-hover:text-white mb-6 transition-all">
+              <div className="w-16 h-16 rounded-xl bg-[var(--color-primary)]/10 group-hover:bg-[var(--color-primary)] flex items-center justify-center text-[var(--color-primary)] group-hover:text-[var(--color-accent)] mb-6 transition-all">
                 {service.icon}
               </div>
-              <h3 className="font-serif text-xl font-semibold text-white group-hover:text-gray-700 mb-3 transition-colors">
+              <h3 className="font-serif text-xl font-semibold text-white group-hover:text-[var(--color-primary-light)] mb-3 transition-colors">
                 {service.title}
               </h3>
-              <p className="text-white/90 group-hover:text-gray-600 text-sm leading-relaxed transition-colors">
+              <p className="text-white/80 group-hover:text-white text-sm leading-relaxed transition-colors">
                 {service.description}
               </p>
             </div>
