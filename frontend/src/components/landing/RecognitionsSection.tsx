@@ -53,13 +53,13 @@ export function RecognitionsSection() {
         <p className="text-center text-gray-600 w-full mx-auto mb-8">
           Our initiative aligns with the UN's Sustainable Development Goals. <br/>We are actively working with the Ministry of Education (MOE) and other public sector entities.
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
           {partners.map((partner, index) => (
             <div
               key={index}
               className="recognition-item flex flex-col items-center gap-3 p-4 hover:bg-gray-50 rounded-xl transition-all duration-300 opacity-0 group cursor-default"
             >
-              <div className="w-24 h-24 relative flex items-center justify-center transition-transform group-hover:-translate-y-1">
+              <div className="w-32 h-32 relative flex items-center justify-center transition-transform group-hover:-translate-y-1">
                  <img 
                     src={partner.logo} 
                     alt={partner.alt} 
