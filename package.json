@@ -1,0 +1,19 @@
+{
+  "name": "Law4Minor",
+  "version": "0.0.1",
+  "description": "Law4Minor is a platform for legal education and awareness.",
+  "author": "Lukas How",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "dev:frontend": "bun run --filter frontend dev",
+    "dev:backend": "bun run --filter backend dev",
+    "build": "bun run --filter '*' build",
+    "lint": "bun run --filter '*' lint"
+  }
+}

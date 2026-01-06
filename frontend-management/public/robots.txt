@@ -1,0 +1,5 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# Block all crawlers for the management/admin interface
+User-agent: *
+Disallow: /
