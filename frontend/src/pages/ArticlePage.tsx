@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { api } from '../services/api';
 import { SEO } from '../components/SEO';
+import { Icon } from '@iconify/react';
 
 interface Article {
   id: string;
@@ -76,6 +77,7 @@ export function ArticlePage() {
     
     // If content is a Lexical JSON object, we need to convert it to HTML
     // For now, we'll render a simple text version or check if it has HTML
+	// Still requires large amount of fixes in future :(
     if (typeof article.content === 'string') {
       return article.content;
     }
@@ -170,13 +172,19 @@ export function ArticlePage() {
                 {article.title}
             </h1>
 
+			{/* author info */}
             <div className="flex items-center justify-center gap-6 text-sm text-gray-500 font-medium">
                 <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
-                       <img 
-                         src={article.author?.avatar ? getImageUrl(article.author.avatar) : `https://ui-avatars.com/api/?name=${getAuthorName()}&background=random`} 
-                         alt="Author" 
-                       />
+						{article.author?.avatar ? (
+							<img 
+							  src={getImageUrl(article.author.avatar)} 
+							  alt={getAuthorName()} 
+							  className="w-full h-full object-cover"
+							/>
+						) : (
+							<Icon icon="mdi:account" className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"/>
+						)}
                     </div>
                     <span>{getAuthorName()}</span>
                 </div>
