@@ -4,13 +4,14 @@ import { SEO } from '../components/SEO';
 
 interface Event {
   id: string;
-  title: string;
+  name: string;
   startDate: string;
   endDate?: string;
   location: string;
   category?: string;
   banner?: string;
   description: string;
+  attendLink: string;
 }
 
 export function EventsPage() {
@@ -142,7 +143,7 @@ export function EventsPage() {
                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 z-10" />
                        <img 
                         src={getImageUrl(event.banner)} 
-                        alt={event.title}
+                        alt={event.name}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
                        />
                     </div>
@@ -163,7 +164,7 @@ export function EventsPage() {
                       </div>
 
                       <h3 className="font-serif text-2xl font-bold text-[var(--color-accent)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">
-                        {event.title}
+                        {event.name}
                       </h3>
                       
                       <p className="text-gray-600 mb-6 line-clamp-2">
@@ -179,9 +180,9 @@ export function EventsPage() {
                           {event.location}
                         </div>
                         
-                        <button className="btn btn-outline py-2 px-5 text-sm group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:border-[var(--color-primary)]">
+                        <a href={event.attendLink} className="btn btn-outline py-2 px-5 text-sm group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:border-[var(--color-primary)]">
                           Register Now
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
