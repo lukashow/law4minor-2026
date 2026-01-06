@@ -84,7 +84,7 @@ export function TeamSection() {
           <div className="mb-12">
             <span className="text-[var(--color-primary)] text-sm font-medium uppercase tracking-wider">Our Team</span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-4">
-              Meet The People Behind Law4Minor
+              From Youth, and To Youth
             </h2>
           </div>
 

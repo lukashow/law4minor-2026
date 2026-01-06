@@ -106,6 +106,10 @@ export function ArticlePage() {
             }).join('') || '';
             return `<${tag}>${items}</${tag}>`;
           }
+		  if (node.type === 'code') {
+			const text = node.children?.map((c: any) => c.text || '').join('') || '';
+			return `<pre><code>${text}</code></pre>`;
+		  }
           return '';
         }).join('\n');
       }

@@ -47,7 +47,7 @@ export function RecognitionsSection() {
             Recognitions & Partnerships
           </span>
 		  <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-primary)] mt-4 mb-4">
-            Legal Solutions For<br />All Situations.
+            Sustainability<br />for the Law.
           </h2>
         </div>
         <p className="text-center text-gray-600 w-full mx-auto mb-8">
