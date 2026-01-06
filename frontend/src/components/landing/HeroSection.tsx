@@ -111,7 +111,7 @@ export function HeroSection() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)] to-transparent z-10" />
               <img
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=700&q=80"
+                src="/images/hero-image.webp"
                 alt="Legal Education"
                 className="w-full h-full object-cover"
               />

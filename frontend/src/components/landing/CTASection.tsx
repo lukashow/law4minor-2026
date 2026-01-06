@@ -6,7 +6,7 @@ export function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80" 
+          src="/images/cta-background.webp" 
           alt="Legal Background" 
           className="w-full h-full object-cover"
         />

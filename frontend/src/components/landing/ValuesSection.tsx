@@ -77,7 +77,7 @@ export function ValuesSection() {
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
         <img
-          src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&w=1920&q=80"
+          src="/images/values-bg.webp"
           alt=""
           className="w-full h-full object-cover"
         />
@@ -126,14 +126,14 @@ export function ValuesSection() {
                 <div className="">
                   <div className="aspect-square rounded-2xl overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=400&q=80"
+                      src="/images/values-team-1.jpg"
                       alt="Team collaboration"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=400&q=80"
+                      src="/images/values-team-2.jpg"
                       alt="Legal books"
                       className="w-full h-full object-cover"
                     />
@@ -142,14 +142,14 @@ export function ValuesSection() {
                 <div className="space-y-4 pt-12">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=400&q=80"
+                      src="/images/values-team-3.jpg"
                       alt="Education"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-square rounded-2xl overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+                      src="/images/values-team-4.jpg"
                       alt="Community"
                       className="w-full h-full object-cover"
                     />

@@ -1,11 +1,16 @@
 import { useState } from 'react';
 
-const mockMedia = [
-  { id: '1', name: 'hero-image.jpg', type: 'image', size: '2.4 MB', date: 'June 15, 2025', url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=200&q=80' },
-  { id: '2', name: 'team-photo.jpg', type: 'image', size: '1.8 MB', date: 'June 10, 2025', url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80' },
-  { id: '3', name: 'article-cover.jpg', type: 'image', size: '1.2 MB', date: 'June 5, 2025', url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=200&q=80' },
-  { id: '4', name: 'logo.png', type: 'image', size: '156 KB', date: 'Jan 1, 2025', url: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=200&q=80' },
-];
+interface MediaItem {
+  id: string;
+  name: string;
+  type: string;
+  size: string;
+  date: string;
+  url: string;
+}
+
+// No mock data - will fetch from API
+const mockMedia: MediaItem[] = [];
 
 export function MediaLibrary() {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);

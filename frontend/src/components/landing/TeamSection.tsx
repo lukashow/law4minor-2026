@@ -65,7 +65,7 @@ export function TeamSection() {
   }, [team]);
 
   const getImageUrl = (url?: string) => {
-    if (!url) return 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80';
+    if (!url) return '';
     if (url.startsWith('http')) return url;
     return `http://localhost:3001${url}`;
   };
@@ -74,15 +74,8 @@ export function TeamSection() {
     return member.displayName || `${member.firstName} ${member.lastName}`;
   };
 
-  // Use fallback team if no team members from API
-  const fallbackTeam: TeamMember[] = [
-    { id: '1', firstName: 'Senior', lastName: 'Advisor', teamRole: 'Legal Consultant', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80', bio: 'Experienced legal consultant with expertise in youth law.' },
-    { id: '2', firstName: 'Program', lastName: 'Lead', teamRole: 'Education Director', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80', bio: 'Leading educational initiatives for legal awareness.' },
-    { id: '3', firstName: 'Content', lastName: 'Creator', teamRole: 'Media Specialist', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', bio: 'Creating engaging content to simplify legal concepts.' },
-    { id: '4', firstName: 'Community', lastName: 'Lead', teamRole: 'Outreach Coordinator', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80', bio: 'Building bridges between youth and legal resources.' },
-  ];
 
-  const displayTeam = team.length > 0 ? team : fallbackTeam;
+  const displayTeam = team;
 
   return (
     <>
@@ -96,7 +89,7 @@ export function TeamSection() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {displayTeam.map((member) => (
+            {displayTeam.length > 0 && displayTeam.map((member) => (
               <div 
                 key={member.id} 
                 className="team-card group cursor-pointer opacity-0"

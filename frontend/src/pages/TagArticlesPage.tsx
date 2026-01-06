@@ -64,7 +64,7 @@ export function TagArticlesPage() {
   }, [tagSlug]);
 
   const getImageUrl = (url?: string) => {
-    if (!url) return 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80';
+    if (!url) return '/images/placeholder.png';
     if (url.startsWith('http')) return url;
     return `http://localhost:3001${url}`;
   };
