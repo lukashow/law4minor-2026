@@ -63,7 +63,7 @@ export function ArticlesSection() {
   }, [articles]);
 
   const getImageUrl = (url?: string) => {
-    if (!url) return 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80';
+    if (!url) return '';
     if (url.startsWith('http')) return url;
     return `http://localhost:3001${url}`;
   };
@@ -111,11 +111,17 @@ export function ArticlesSection() {
                 className="article-card group opacity-0"
               >
                 <div className="relative overflow-hidden rounded-2xl mb-4">
-                  <img
-                    src={getImageUrl(article.image)}
-                    alt={article.title}
-                    className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+					{article.image ? (
+						<img
+							src={getImageUrl(article.image)}
+							alt={article.title}
+							className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+						/>
+					) : (
+						<div className="w-full aspect-[4/3] bg-gray-300 flex items-center justify-center">
+							<img src="/favicon.png" alt="No Image" className="w-32 h-32 grayscale contrast-50 brightness-150" />
+						</div>
+					)}
                   {article.category && (
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">

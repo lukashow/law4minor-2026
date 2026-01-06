@@ -61,7 +61,7 @@ export function ArticlePage() {
   };
 
   const getImageUrl = (url?: string) => {
-    if (!url) return 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80';
+    if (!url) return '/images/placeholder.png';
     if (url.startsWith('http')) return url;
     return `http://localhost:3001${url}`;
   };
@@ -186,11 +186,17 @@ export function ArticlePage() {
       <section className="px-4 md:px-8">
           <div className="container max-w-5xl mx-auto">
              <div className="w-full aspect-[21/9] overflow-hidden rounded-lg shadow-sm">
-                 <img 
-                    src={getImageUrl(article.image)} 
-                    alt={article.title} 
-                    className="w-full h-full object-cover"
-                 />
+                 {article.image ? (
+						<img
+							src={getImageUrl(article.image)}
+							alt={article.title}
+							className="w-full h-full object-cover"
+						/>
+					) : (
+						<div className="w-full h-full bg-gray-300 flex items-center justify-center">
+							<img src="/favicon.png" alt="No Image" className="w-32 h-32 grayscale contrast-50 brightness-150" />
+						</div>
+					)}
              </div>
           </div>
       </section>
