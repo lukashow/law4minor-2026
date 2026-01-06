@@ -5,3 +5,5 @@ dist
 .DS_Store
 database/pb_data
 database/pocketbase
+
+frontend-next/.next
