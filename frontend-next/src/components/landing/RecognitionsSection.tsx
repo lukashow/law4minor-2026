@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { animate, stagger } from 'animejs';
 
 export function RecognitionsSection() {
@@ -62,9 +63,11 @@ export function RecognitionsSection() {
               className="recognition-item flex flex-col items-center gap-3 p-4 hover:bg-gray-50 rounded-xl transition-all duration-300 opacity-0 group cursor-default"
             >
               <div className="w-32 h-32 relative flex items-center justify-center transition-transform group-hover:-translate-y-1">
-                 <img 
+                 <Image 
                     src={partner.logo} 
                     alt={partner.alt} 
+                    width={128}
+                    height={128}
                     className="w-full h-full object-contain drop-shadow-sm" 
                  />
               </div>

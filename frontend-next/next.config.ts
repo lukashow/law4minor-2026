@@ -1,13 +1,16 @@
 import type { NextConfig } from "next";
 
+// Backend URL from environment variable
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
+const backendUrl = new URL(BACKEND_URL);
+
 const nextConfig: NextConfig = {
-  // Enable server components by default (App Router)
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "3001",
+        protocol: backendUrl.protocol.replace(":", "") as "http" | "https",
+        hostname: backendUrl.hostname,
+        port: backendUrl.port || "",
         pathname: "/uploads/**",
       },
     ],
@@ -17,11 +20,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:3001/api/:path*",
+        destination: `${BACKEND_URL}/api/:path*`,
       },
       {
         source: "/uploads/:path*",
-        destination: "http://localhost:3001/uploads/:path*",
+        destination: `${BACKEND_URL}/uploads/:path*`,
       },
     ];
   },

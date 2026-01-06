@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { animate, stagger } from 'animejs';
 
 const values = [
@@ -78,9 +79,10 @@ export function ValuesSection() {
     <section ref={sectionRef} className="section bg-[var(--color-gray-900)] relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
-        <img
+        <Image
           src="/images/values-bg.webp"
           alt=""
+          fill
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-gray-900)] via-[var(--color-gray-900)]/80 to-transparent" />
@@ -127,32 +129,40 @@ export function ValuesSection() {
               <div className="relative grid grid-cols-2 gap-4 grid-col-gap-8">
                 <div className="">
                   <div className="aspect-square rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src="/images/values-team-1.jpg"
                       alt="Team collaboration"
+                      width={300}
+                      height={300}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src="/images/values-team-2.jpg"
                       alt="Legal books"
+                      width={300}
+                      height={225}
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
                 <div className="space-y-4 pt-12">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src="/images/values-team-3.jpg"
                       alt="Education"
+                      width={300}
+                      height={225}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-square rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src="/images/values-team-4.jpg"
                       alt="Community"
+                      width={300}
+                      height={300}
                       className="w-full h-full object-cover"
                     />
                   </div>

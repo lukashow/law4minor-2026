@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
 
 interface Article {
@@ -103,14 +104,16 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                 <a key={article.id} href={`/articles/${article.slug}`} className="group flex flex-col gap-4">
                   <div className="relative overflow-hidden aspect-[4/3] rounded-sm bg-gray-100">
                     {article.image ? (
-                      <img
+                      <Image
                         src={getImageUrl(article.image)}
                         alt={article.title}
+                        width={400}
+                        height={300}
                         className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
                       <div className="w-full aspect-[4/3] bg-gray-300 flex items-center justify-center">
-                        <img src="/favicon.png" alt="No Image" className="w-32 h-32 grayscale contrast-50 brightness-150" />
+                        <Image src="/favicon.png" alt="No Image" width={128} height={128} className="w-32 h-32 grayscale contrast-50 brightness-150" />
                       </div>
                     )}
                     {article.category && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { createTimeline } from 'animejs';
 
 export function HeroSection() {
@@ -111,9 +112,11 @@ export function HeroSection() {
           <div className="hero-image relative hidden lg:block opacity-0 w-[80%]">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)] to-transparent z-10" />
-              <img
+              <Image
                 src="/images/hero-image.webp"
                 alt="Legal Education"
+                width={600}
+                height={750}
                 className="w-full h-full object-cover"
               />
             </div>

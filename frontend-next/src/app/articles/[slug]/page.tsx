@@ -1,17 +1,19 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Icon } from "@iconify/react";
+import { BACKEND_URL } from "@/lib/api";
 
 // Process image URLs
 function processImageUrl(url?: string): string {
   if (!url) return "/images/placeholder.png";
-  return url.replace(/^https?:\/\/localhost:3001/, "");
+  return url.replace(new RegExp(`^${BACKEND_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), "").replace(/^https?:\/\/localhost:\d+/, "");
 }
 
 // Server-side data fetching
 async function getArticle(slug: string) {
   try {
-    const res = await fetch(`http://localhost:3001/api/public/articles/${slug}`, {
+    const res = await fetch(`${BACKEND_URL}/api/public/articles/${slug}`, {
       next: { revalidate: 60 },
     });
     if (res.ok) {
@@ -132,9 +134,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {article.image && (
         <section className="container max-w-4xl -mt-8">
           <div className="aspect-video rounded-2xl overflow-hidden shadow-xl">
-            <img
+            <Image
               src={article.image}
               alt={article.title}
+              width={900}
+              height={506}
               className="w-full h-full object-cover"
             />
           </div>

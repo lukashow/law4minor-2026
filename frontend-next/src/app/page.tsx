@@ -6,12 +6,7 @@ import { TeamSection } from "@/components/landing/TeamSection";
 import { ArticlesSection } from "@/components/landing/ArticlesSection";
 import { RecognitionsSection } from "@/components/landing/RecognitionsSection";
 import { CTASection } from "@/components/landing/CTASection";
-
-// Process image URLs to be relative
-function processImageUrl(url?: string): string | undefined {
-  if (!url) return undefined;
-  return url.replace(/^https?:\/\/localhost:3001/, "");
-}
+import { BACKEND_URL, processImageUrl } from "@/lib/api";
 
 // Server-side data fetching
 async function getHomeData() {
@@ -19,7 +14,7 @@ async function getHomeData() {
   let team: any[] = [];
 
   try {
-    const articlesRes = await fetch("http://localhost:3001/api/public/articles?perPage=3", {
+    const articlesRes = await fetch(`${BACKEND_URL}/api/public/articles?perPage=3`, {
       next: { revalidate: 60 }, // Revalidate every 60 seconds
     });
     if (articlesRes.ok) {
@@ -35,7 +30,7 @@ async function getHomeData() {
   }
 
   try {
-    const teamRes = await fetch("http://localhost:3001/api/public/team", {
+    const teamRes = await fetch(`${BACKEND_URL}/api/public/team`, {
       next: { revalidate: 60 },
     });
     if (teamRes.ok) {

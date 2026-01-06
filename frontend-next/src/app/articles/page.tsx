@@ -1,16 +1,11 @@
 import { Metadata } from "next";
 import { ArticlesClient } from "./ArticlesClient";
+import { BACKEND_URL, processImageUrl } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Articles",
   description: "Explore our curated collection of articles on legal topics, youth rights, and stories from the legal world.",
 };
-
-// Process image URLs
-function processImageUrl(url?: string): string | undefined {
-  if (!url) return undefined;
-  return url.replace(/^https?:\/\/localhost:3001/, "");
-}
 
 // Server-side data fetching
 async function getArticlesData() {
@@ -18,7 +13,7 @@ async function getArticlesData() {
   let categories: any[] = [];
 
   try {
-    const articlesRes = await fetch("http://localhost:3001/api/public/articles", {
+    const articlesRes = await fetch(`${BACKEND_URL}/api/public/articles`, {
       next: { revalidate: 60 },
     });
     if (articlesRes.ok) {
@@ -34,7 +29,7 @@ async function getArticlesData() {
   }
 
   try {
-    const categoriesRes = await fetch("http://localhost:3001/api/public/categories", {
+    const categoriesRes = await fetch(`${BACKEND_URL}/api/public/categories`, {
       next: { revalidate: 60 },
     });
     if (categoriesRes.ok) {
@@ -54,14 +49,14 @@ export default async function ArticlesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[var(--color-paper)] pt-32 pb-16">
+      <section className="bg-[var(--color-primary)] pt-32 pb-16">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="text-[var(--color-primary)] text-sm font-medium uppercase tracking-wider">Knowledge Hub</span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-accent)] mt-2 mb-6">
+            <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">Knowledge Hub</span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 mb-6">
               Articles
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-white">
               Explore our curated collection of articles on legal topics for youth.
             </p>
           </div>

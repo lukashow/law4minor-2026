@@ -1,13 +1,16 @@
 "use client";
 
+import Image from 'next/image';
+
 export function CTASection() {
   return (
     <section className="section relative overflow-hidden flex items-center min-h-[500px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src="/images/cta-background.webp" 
           alt="Legal Background" 
+          fill
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />

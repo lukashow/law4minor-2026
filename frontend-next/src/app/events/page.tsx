@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import { BACKEND_URL } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -10,13 +11,13 @@ export const metadata: Metadata = {
 // Process image URLs
 function processImageUrl(url?: string): string {
   if (!url) return "/images/placeholder.png";
-  return url.replace(/^https?:\/\/localhost:3001/, "");
+  return url.replace(new RegExp(`^${BACKEND_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), "").replace(/^https?:\/\/localhost:\d+/, "");
 }
 
 // Server-side data fetching
 async function getEvents() {
   try {
-    const res = await fetch("http://localhost:3001/api/public/events", {
+    const res = await fetch(`${BACKEND_URL}/api/public/events`, {
       next: { revalidate: 60 },
     });
     if (res.ok) {
