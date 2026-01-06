@@ -81,9 +81,12 @@ export function ArticlesSection() {
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
           <div>
-            <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">Latest</span>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-primary)] mt-4">
-              Articles
+            <div className="hero-tagline flex items-center gap-2 mb-6">
+              <span className="w-8 h-[2px] bg-[var(--color-primary)]" />
+              <span className="text-sm text-[var(--color-primary)] uppercase tracking-wider">Blog</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-accent)] mt-4">
+              Latest Articles
             </h2>
             <p className="text-gray-600 mt-2">
               Stay informed with our latest legal insights and resources.
@@ -91,7 +94,7 @@ export function ArticlesSection() {
           </div>
           <Link
             to="/articles"
-            className="btn btn-outline group"
+            className="btn btn-outline group w-full md:w-auto justify-start md:justify-center px-0 md:px-4"
           >
             View All Articles
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
