@@ -7,10 +7,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 10, label: 'Years of Contribution', suffix: '+' },
-  { value: 12, label: 'Youth Reached', suffix: 'K+' },
-  { value: 98, label: 'Program Success Rate', suffix: '%' },
-  { value: 3, label: 'Partner Organizations', suffix: 'K+' },
+  { value: 2, label: 'Years of Contribution', suffix: '+' },
+  { value: 100, label: 'Youths Reached', suffix: 'K+' },
+  { value: 50, label: 'Social Media Followers', suffix: '+' },
+  { value: 5, label: 'Partner Organizations', suffix: '+' },
 ];
 
 function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
