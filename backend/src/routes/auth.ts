@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import prisma from '../services/prisma';
-// Note: In production, use bcrypt for password hashing and JWT for tokens
+import { hashPassword, verifyPassword, needsRehash } from '../utils/password';
 
 const router = Router();
 
@@ -8,6 +8,10 @@ const router = Router();
 router.post('/login', async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email and password are required' });
+    }
     
     const user = await prisma.user.findUnique({
       where: { email },
@@ -27,12 +31,24 @@ router.post('/login', async (req: Request, res: Response) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     
-    // TODO: Use bcrypt.compare in production
-    if (user.password !== password) {
+    // Verify password using secure comparison
+    const isValid = await verifyPassword(password, user.password);
+    if (!isValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     
-    // TODO: Generate JWT token in production
+    // If password needs rehashing (e.g., was plain text or using old algorithm)
+    // Rehash it transparently on successful login
+    if (needsRehash(user.password)) {
+      const newHash = await hashPassword(password);
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { password: newHash },
+      });
+      console.log(`Password rehashed for user: ${user.email}`);
+    }
+    
+    // Remove password from response
     const { password: _, ...userWithoutPassword } = user;
     
     // Create name for compatibility
@@ -40,9 +56,10 @@ router.post('/login', async (req: Request, res: Response) => {
     
     res.json({
       user: { ...userWithoutPassword, name },
-      token: 'mock-jwt-token', // Replace with real JWT
+      token: user.id, // Using user ID as token for now (replace with JWT in production)
     });
   } catch (error: any) {
+    console.error('Login error:', error);
     res.status(500).json({ error: error.message || 'Login failed' });
   }
 });
@@ -51,6 +68,14 @@ router.post('/login', async (req: Request, res: Response) => {
 router.post('/register', async (req: Request, res: Response) => {
   try {
     const { email, password, firstName, lastName, displayName, name } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email and password are required' });
+    }
+    
+    if (password.length < 8) {
+      return res.status(400).json({ error: 'Password must be at least 8 characters' });
+    }
     
     const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
@@ -66,11 +91,13 @@ router.post('/register', async (req: Request, res: Response) => {
       lName = parts.slice(1).join(' ') || '';
     }
     
-    // TODO: Hash password with bcrypt in production
+    // Hash password with unique salt
+    const hashedPassword = await hashPassword(password);
+    
     const user = await prisma.user.create({
       data: {
         email,
-        password, // Hash this!
+        password: hashedPassword,
         firstName: fName,
         lastName: lName || '',
         displayName: displayName || name || `${fName} ${lName || ''}`.trim(),
@@ -88,7 +115,7 @@ router.post('/register', async (req: Request, res: Response) => {
     
     res.status(201).json({
       user: { ...user, name: user.displayName },
-      token: 'mock-jwt-token', // Replace with real JWT
+      token: user.id, // Using user ID as token for now
     });
   } catch (error: any) {
     console.error('Registration error:', error);
@@ -99,8 +126,8 @@ router.post('/register', async (req: Request, res: Response) => {
 // Get current user
 router.get('/me', async (req: Request, res: Response) => {
   try {
-    // TODO: Get user ID from JWT token
-    const userId = req.headers['x-user-id'] as string;
+    // Get user ID from header (should come from JWT verification in production)
+    const userId = req.headers['x-user-id'] as string || req.headers.authorization?.replace('Bearer ', '');
     
     if (!userId) {
       return res.status(401).json({ error: 'Not authenticated' });
@@ -126,6 +153,53 @@ router.get('/me', async (req: Request, res: Response) => {
     res.json({ ...user, name: user.displayName || `${user.firstName} ${user.lastName}` });
   } catch (error: any) {
     res.status(500).json({ error: error.message || 'Failed to get user' });
+  }
+});
+
+// Change password
+router.post('/change-password', async (req: Request, res: Response) => {
+  try {
+    const userId = req.headers['x-user-id'] as string || req.headers.authorization?.replace('Bearer ', '');
+    const { currentPassword, newPassword } = req.body;
+    
+    if (!userId) {
+      return res.status(401).json({ error: 'Not authenticated' });
+    }
+    
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: 'Current and new password are required' });
+    }
+    
+    if (newPassword.length < 8) {
+      return res.status(400).json({ error: 'New password must be at least 8 characters' });
+    }
+    
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true, password: true },
+    });
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    // Verify current password
+    const isValid = await verifyPassword(currentPassword, user.password);
+    if (!isValid) {
+      return res.status(401).json({ error: 'Current password is incorrect' });
+    }
+    
+    // Hash and save new password
+    const hashedPassword = await hashPassword(newPassword);
+    await prisma.user.update({
+      where: { id: userId },
+      data: { password: hashedPassword },
+    });
+    
+    res.json({ message: 'Password changed successfully' });
+  } catch (error: any) {
+    console.error('Change password error:', error);
+    res.status(500).json({ error: error.message || 'Failed to change password' });
   }
 });
 

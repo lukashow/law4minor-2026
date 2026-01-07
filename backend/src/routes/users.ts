@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import prisma from '../services/prisma';
+import { hashPassword } from '../utils/password';
 
 const router = Router();
 
@@ -100,7 +101,14 @@ router.put('/:id', async (req: Request, res: Response) => {
       isTeamMember,
       teamOrder,
       teamRole,
+      password,
     } = req.body;
+    
+    // Hash password if provided
+    let hashedPassword: string | undefined;
+    if (password) {
+      hashedPassword = await hashPassword(password);
+    }
     
     const user = await prisma.user.update({
       where: { id: req.params.id },
@@ -121,6 +129,7 @@ router.put('/:id', async (req: Request, res: Response) => {
         ...(isTeamMember !== undefined && { isTeamMember }),
         ...(teamOrder !== undefined && { teamOrder }),
         ...(teamRole !== undefined && { teamRole }),
+        ...(hashedPassword && { password: hashedPassword }),
       },
       select: {
         id: true,

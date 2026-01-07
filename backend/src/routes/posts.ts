@@ -147,6 +147,17 @@ router.post('/', optionalAuth, async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Title and slug are required' });
     }
     
+    // Generate unique slug if it already exists
+    let uniqueSlug = slug;
+    let slugExists = await prisma.article.findUnique({ where: { slug: uniqueSlug } });
+    let counter = 1;
+    
+    while (slugExists) {
+      uniqueSlug = `${slug}-${counter}`;
+      slugExists = await prisma.article.findUnique({ where: { slug: uniqueSlug } });
+      counter++;
+    }
+    
     // Determine author
     let finalAuthorId = authorId;
     
@@ -181,7 +192,7 @@ router.post('/', optionalAuth, async (req: Request, res: Response) => {
     const post = await prisma.article.create({
       data: {
         title,
-        slug,
+        slug: uniqueSlug,
         content: content || {},
         excerpt,
         image,

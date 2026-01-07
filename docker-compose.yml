@@ -1,22 +1,47 @@
 version: '3.8'
 services:
   postgres:
-    image: postgres:15-alpine
-    container_name: law4minor_db
+    image: postgres:16-alpine
+    container_name: law4minor-db
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: law4minor_dbadmin
+      POSTGRES_PASSWORD: law4minor_pass123
       POSTGRES_DB: law4minor
     ports:
       - "5550:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - law4minor-pgdata:/var/lib/postgresql/data
     networks:
-      - app-network
+      - law4minor-vnet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U law4minor_dbadmin -d law4minor"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: law4minor-backend
+    environment:
+      DATABASE_URL: postgresql://law4minor_dbadmin:law4minor_pass123@postgres:5432/law4minor
+      PORT: 3001
+      ADMIN_EMAIL: admin@law4minor.com
+      ADMIN_PASSWORD: Law4MinorPW1753##
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - law4minor-vnet
 
 networks:
-  app-network:
+  law4minor-vnet:
     driver: bridge
 
 volumes:
-  postgres_data:
+  law4minor-pgdata:
