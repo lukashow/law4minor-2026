@@ -51,38 +51,65 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // Render article content - handles HTML string or Lexical JSON
 function renderContent(content: any) {
-  if (!content) {
-    return <p className="text-gray-500">No content available.</p>;
-  }
+	console.log(content);
+  if (!content) return <p className="text-gray-500">No content available.</p>;
+  if (typeof content === "string") return <div dangerouslySetInnerHTML={{ __html: content }} />;
 
-  // If it's a string, render as HTML
-  if (typeof content === "string") {
-    return <div dangerouslySetInnerHTML={{ __html: content }} />;
-  }
+  // Recursive helper to get text from any depth (Text nodes, Paragraphs in Quotes, etc.)
+  const getNestedText = (node: any): string => {
+    if (node.text) return node.text;
+    if (node.children) {
+      return node.children.map((child: any) => getNestedText(child)).join("");
+    }
+    return "";
+  };
 
-  // If it's Lexical JSON format, try to render text from nodes
+
+
   if (content.root?.children) {
     return (
       <div>
         {content.root.children.map((node: any, i: number) => {
+          const text = getNestedText(node);
+
+          // 1. Handle Paragraphs
           if (node.type === "paragraph") {
-            const text = node.children?.map((child: any) => child.text || "").join("") || "";
             return <p key={i}>{text}</p>;
           }
+
+          // 2. Handle Headings
           if (node.type === "heading") {
-            const text = node.children?.map((child: any) => child.text || "").join("") || "";
-            // Use specific heading tags based on level
-            if (node.tag === 1) return <h1 key={i}>{text}</h1>;
-            if (node.tag === 3) return <h3 key={i}>{text}</h3>;
-            return <h2 key={i}>{text}</h2>;
+            const Tag = node.tag === "h1" ? "h1" : node.tag === "h3" ? "h3" : "h2";
+            return <Tag key={i}>{text}</Tag>;
           }
+
+          // 3. Handle Quotes (using the nested logic from earlier)
+          if (node.type === "quote") {
+            return (
+              <blockquote key={i} className="border-l-4 border-primary pl-6 italic my-6">
+                {text}
+              </blockquote>
+            );
+          }
+
+          // 4. Handle Lists (ol and ul)
+          if (node.type === "list") {
+            const ListTag = node.tag === "ol" ? "ol" : "ul";
+            return (
+              <ListTag key={i} className={ListTag === "ol" ? "list-decimal ml-6" : "list-disc ml-6"}>
+                {node.children?.map((listItem: any, j: number) => (
+                  <li key={j}>{getNestedText(listItem)}</li>
+                ))}
+              </ListTag>
+            );
+          }
+
           return null;
         })}
       </div>
     );
   }
 
-  // Fallback: just render as string
   return <p>{String(content)}</p>;
 }
 
@@ -148,8 +175,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Content */}
       <section className="container max-w-4xl py-12">
         <div className="prose prose-lg max-w-none">
-          {article.excerpt && <p className="lead text-lg text-gray-600">{article.excerpt}</p>}
-
           {renderContent(article.content)}
         </div>
 
