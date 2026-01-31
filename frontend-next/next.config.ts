@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "law4minor.org",
+        hostname: "admin.law4minor.org",
         pathname: "/wp-content/**",
       },
       {
