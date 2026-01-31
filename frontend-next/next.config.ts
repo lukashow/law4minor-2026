@@ -1,32 +1,24 @@
 import type { NextConfig } from "next";
 
-// Backend URL from environment variable
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
-const backendUrl = new URL(BACKEND_URL);
-
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: backendUrl.protocol.replace(":", "") as "http" | "https",
-        hostname: backendUrl.hostname,
-        port: backendUrl.port || "",
-        pathname: "/uploads/**",
+        protocol: "https",
+        hostname: "law4minor.org",
+        pathname: "/wp-content/**",
+      },
+      {
+        protocol: "https",
+        hostname: "secure.gravatar.com",
+        pathname: "/avatar/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh7-rt.googleusercontent.com",
+        pathname: "/**",
       },
     ],
-  },
-  // Proxy API calls to backend
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${BACKEND_URL}/api/:path*`,
-      },
-      {
-        source: "/uploads/:path*",
-        destination: `${BACKEND_URL}/uploads/:path*`,
-      },
-    ];
   },
 };
 

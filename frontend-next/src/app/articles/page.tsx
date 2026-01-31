@@ -1,41 +1,27 @@
 import { Metadata } from "next";
 import { ArticlesClient } from "./ArticlesClient";
-import { BACKEND_URL, processImageUrl } from "@/lib/api";
+import { fetchPosts, fetchCategories, Article, Category } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Articles",
   description: "Explore our curated collection of articles on legal topics, youth rights, and stories from the legal world.",
 };
 
-// Server-side data fetching
+// Server-side data fetching using WordPress REST API
 async function getArticlesData() {
-  let articles: any[] = [];
-  let categories: any[] = [];
+  let articles: Article[] = [];
+  let categories: Category[] = [];
 
   try {
-    const articlesRes = await fetch(`${BACKEND_URL}/api/public/articles`, {
-      next: { revalidate: 60 },
-    });
-    if (articlesRes.ok) {
-      const result = await articlesRes.json();
-      const rawArticles = result.items || result || [];
-      articles = rawArticles.map((article: any) => ({
-        ...article,
-        image: processImageUrl(article.image),
-      }));
-    }
+    // Fetch all articles from WordPress
+    articles = await fetchPosts({ perPage: 100 });
   } catch (err) {
     console.error("[SSR] Articles fetch failed:", err);
   }
 
   try {
-    const categoriesRes = await fetch(`${BACKEND_URL}/api/public/categories`, {
-      next: { revalidate: 60 },
-    });
-    if (categoriesRes.ok) {
-      const result = await categoriesRes.json();
-      categories = Array.isArray(result) ? result : result.items || [];
-    }
+    // Fetch categories from WordPress
+    categories = await fetchCategories();
   } catch (err) {
     console.error("[SSR] Categories fetch failed:", err);
   }

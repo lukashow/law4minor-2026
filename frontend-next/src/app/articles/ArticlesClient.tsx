@@ -10,7 +10,7 @@ interface Article {
   slug: string;
   excerpt?: string;
   image?: string;
-  category?: { name: string };
+  category?: { id: string; name: string; slug: string };
   createdAt: string;
 }
 
@@ -18,6 +18,7 @@ interface Category {
   id: string;
   name: string;
   slug: string;
+  count: number;
 }
 
 interface ArticlesClientProps {
@@ -37,12 +38,6 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
       article.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-
-  const getImageUrl = (url?: string) => {
-    if (!url) return "/images/placeholder.png";
-    if (url.startsWith("http")) return url;
-    return url;
-  };
 
   return (
     <>
@@ -105,7 +100,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                   <div className="relative overflow-hidden aspect-[4/3] rounded-sm bg-gray-100">
                     {article.image ? (
                       <Image
-                        src={getImageUrl(article.image)}
+                        src={article.image}
                         alt={article.title}
                         width={400}
                         height={300}

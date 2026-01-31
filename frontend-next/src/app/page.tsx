@@ -6,40 +6,23 @@ import { TeamSection } from "@/components/landing/TeamSection";
 import { ArticlesSection } from "@/components/landing/ArticlesSection";
 import { RecognitionsSection } from "@/components/landing/RecognitionsSection";
 import { CTASection } from "@/components/landing/CTASection";
-import { BACKEND_URL, processImageUrl } from "@/lib/api";
+import { fetchPosts, fetchTeamMembers, Article, TeamMember } from "@/lib/api";
 
-// Server-side data fetching
+// Server-side data fetching using WordPress REST API
 async function getHomeData() {
-  let articles: any[] = [];
-  let team: any[] = [];
+  let articles: Article[] = [];
+  let team: TeamMember[] = [];
 
   try {
-    const articlesRes = await fetch(`${BACKEND_URL}/api/public/articles?perPage=3`, {
-      next: { revalidate: 60 }, // Revalidate every 60 seconds
-    });
-    if (articlesRes.ok) {
-      const result = await articlesRes.json();
-      const rawArticles = result.items || result || [];
-      articles = rawArticles.map((article: any) => ({
-        ...article,
-        image: processImageUrl(article.image),
-      }));
-    }
+    // Fetch latest 3 articles from WordPress
+    articles = await fetchPosts({ perPage: 3 });
   } catch (err) {
     console.error("[SSR] Articles fetch failed:", err);
   }
 
   try {
-    const teamRes = await fetch(`${BACKEND_URL}/api/public/team`, {
-      next: { revalidate: 60 },
-    });
-    if (teamRes.ok) {
-      const rawTeam = await teamRes.json();
-      team = (Array.isArray(rawTeam) ? rawTeam : []).map((member: any) => ({
-        ...member,
-        avatar: processImageUrl(member.avatar),
-      }));
-    }
+    // Fetch team members from WordPress users
+    team = await fetchTeamMembers();
   } catch (err) {
     console.error("[SSR] Team fetch failed:", err);
   }
@@ -57,7 +40,6 @@ export default async function HomePage() {
       <ValuesSection />
       <ServicesSection />
       <RecognitionsSection />
-      <TeamSection team={team} />
       <ArticlesSection articles={articles} />
       <CTASection />
     </>

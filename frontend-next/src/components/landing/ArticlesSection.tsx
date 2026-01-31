@@ -14,6 +14,7 @@ interface Article {
   category?: {
     id: string;
     name: string;
+    slug?: string;
   };
 }
 
@@ -51,12 +52,6 @@ export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
 
     return () => observer.disconnect();
   }, [articles]);
-
-  const getImageUrl = (url?: string) => {
-    if (!url) return '';
-    if (url.startsWith('http')) return url;
-    return url; // Relative paths work at runtime
-  };
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
@@ -106,7 +101,7 @@ export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
                 <div className="relative overflow-hidden rounded-2xl mb-4">
 					{article.image ? (
 						<Image
-							src={getImageUrl(article.image)}
+							src={article.image}
 							alt={article.title}
 							width={400}
 							height={300}
