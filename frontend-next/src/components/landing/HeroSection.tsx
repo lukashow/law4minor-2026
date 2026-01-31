@@ -54,7 +54,7 @@ export function HeroSection() {
         }} />
       </div>
 
-      <div className="container relative z-10 pt-48 md:pt-24 pb-12 px-12">
+      <div className="container relative z-10 pt-24 pb-12 px-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
