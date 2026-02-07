@@ -130,7 +130,7 @@ export function ValuesSection() {
                 <div className="">
                   <div className="aspect-square rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/values-team-1.jpg"
+                      src="/images/values-team-1.webp"
                       alt="Team collaboration"
                       width={300}
                       height={300}
@@ -139,7 +139,7 @@ export function ValuesSection() {
                   </div>
                   <div className="aspect-4/3 rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/values-team-2.jpg"
+                      src="/images/values-team-2.webp"
                       alt="Legal books"
                       width={300}
                       height={225}
@@ -150,7 +150,7 @@ export function ValuesSection() {
                 <div className="space-y-4 pt-12">
                   <div className="aspect-4/3 rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/values-team-3.jpg"
+                      src="/images/values-team-3.webp"
                       alt="Education"
                       width={300}
                       height={225}
@@ -159,7 +159,7 @@ export function ValuesSection() {
                   </div>
                   <div className="aspect-square rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/values-team-4.jpg"
+                      src="/images/values-team-4.webp"
                       alt="Community"
                       width={300}
                       height={300}

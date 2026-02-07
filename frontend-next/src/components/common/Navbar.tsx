@@ -76,7 +76,7 @@ export function Navbar() {
               href={link.path}
               className={`nav-item text-sm font-medium transition-colors ${
                 isActive(link.path)
-                  ? 'text-white/80'
+                  ? 'text-accent/80'
                   : shouldUseDarkText 
                     ? 'text-accent hover:text-white/80' 
                     : 'text-white/80 hover:text-white'

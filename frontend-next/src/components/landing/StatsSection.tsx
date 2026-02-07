@@ -82,7 +82,7 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="stat-card text-center p-6 rounded-xl group transition-all duration-300 bg-white/90 hover:bg-primary"
+              className="stat-card text-center p-6 rounded-xl group transition-all shadow-md duration-300 bg-white/90 hover:bg-primary"
             >
               <div className="flex items-baseline justify-center">
                 <span
