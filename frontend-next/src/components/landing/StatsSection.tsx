@@ -73,7 +73,7 @@ export function StatsSection() {
       <div className="container">
         <div className="text-center mb-12">
           <span style={{ color: 'var(--color-primary)' }} className="text-sm font-medium uppercase tracking-wider">Our Impact</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-4" style={{ color: 'var(--color-accent)' }}>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-4 text-accent">
             Make Law Accessible<br />For Youth
           </h2>
         </div>
@@ -82,43 +82,21 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="stat-card text-center p-6 rounded-xl group transition-all duration-300"
-              style={{ 
-                backgroundColor: '#F9FAFB',
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: `all 0.6s ease ${index * 15}ms`
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-primary)';
-                e.currentTarget.querySelectorAll('.stat-value, .stat-label .stat-suffix').forEach((el) => {
-                  (el as HTMLElement).style.color = '#FFFFFF';
-                });
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-gray-50)';
-                e.currentTarget.querySelectorAll('.stat-value').forEach((el) => {
-                  (el as HTMLElement).style.color = 'var(--color-accent)';
-                });
-                e.currentTarget.querySelectorAll('.stat-label').forEach((el) => {
-                  (el as HTMLElement).style.color = 'var(--color-gray-600)';
-                });
-              }}
+              className="stat-card text-center p-6 rounded-xl group transition-all duration-300 bg-white/90 hover:bg-primary"
             >
               <div className="flex items-baseline justify-center">
                 <span
-                  className="stat-value font-serif text-4xl md:text-5xl lg:text-6xl font-bold transition-colors"
-                  style={{ color: 'var(--color-accent)' }}
+                  className="stat-value font-serif text-4xl md:text-5xl lg:text-6xl font-bold transition-colors text-accent group-hover:text-white"
                 >
                   {isVisible ? <AnimatedCounter target={stat.value} /> : 0}
                 </span>
                 {stat.suffix && (
-                  <span className="font-serif text-2xl md:text-3xl font-bold" style={{ color: 'var(--color-primary)' }}>
+                  <span className="font-serif text-2xl md:text-3xl font-bold text-primary group-hover:text-white">
                     {stat.suffix}
                   </span>
                 )}
               </div>
-              <p className="stat-label mt-2 text-sm md:text-base transition-colors" style={{ color: 'var(--color-gray-600)' }}>
+              <p className="stat-label mt-2 text-sm md:text-base transition-colors text-gray-600 group-hover:text-white">
                 {stat.label}
               </p>
             </div>
