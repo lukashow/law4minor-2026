@@ -55,14 +55,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <article className="pt-24 pb-16">
       {/* Hero */}
-      <section className="bg-[var(--color-paper)] py-16">
+      <section className="bg-paper py-16">
         <div className="container max-w-4xl">
           {article.category && (
-            <span className="text-[var(--color-primary)] text-sm font-medium uppercase tracking-wider">
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">
               {article.category.name}
             </span>
           )}
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-accent)] mt-4 mb-6">
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-accent mt-4 mb-6">
             {article.title}
           </h1>
 
@@ -103,13 +103,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {/* Tags */}
         {article.tags && article.tags.length > 0 && (
           <div className="mt-12 pt-8 border-t">
-            <h4 className="font-semibold text-[var(--color-primary)] mb-4">Tags</h4>
+            <h4 className="font-semibold text-primary mb-4">Tags</h4>
             <div className="flex flex-wrap gap-2">
               {article.tags.map((tag) => (
                 <a
                   key={tag.id}
                   href={`/articles?tag=${tag.slug}`}
-                  className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                  className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
                 >
                   {tag.name}
                 </a>

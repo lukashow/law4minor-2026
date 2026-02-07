@@ -67,10 +67,10 @@ export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
           <div>
             <div className="hero-tagline flex items-center gap-2 mb-6">
-              <span className="w-8 h-[2px] bg-[var(--color-primary)]" />
-              <span className="text-sm text-[var(--color-primary)] uppercase tracking-wider">Blog</span>
+              <span className="w-8 h-[2px] bg-primary" />
+              <span className="text-sm text-primary uppercase tracking-wider">Blog</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-accent)] mt-4">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-accent mt-4">
               Latest Articles
             </h2>
             <p className="text-gray-600 mt-2">
@@ -105,22 +105,22 @@ export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
 							alt={article.title}
 							width={400}
 							height={300}
-							className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+							className="w-full aspect-4/3 object-cover group-hover:scale-105 transition-transform duration-500"
 						/>
 					) : (
-						<div className="w-full aspect-[4/3] bg-gray-300 flex items-center justify-center">
+						<div className="w-full aspect-4/3 bg-gray-300 flex items-center justify-center">
 							<Image src="/favicon.png" alt="No Image" width={128} height={128} className="w-32 h-32 grayscale contrast-50 brightness-150" />
 						</div>
 					)}
                   {article.category && (
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
+                      <span className="px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
                         {article.category.name}
                       </span>
                     </div>
                   )}
                 </div>
-                <h3 className="font-serif text-xl font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors line-clamp-2">
+                <h3 className="font-serif text-xl font-semibold text-primary group-hover:text-accent transition-colors line-clamp-2">
                   {article.title}
                 </h3>
                 <p className="text-sm text-gray-500 mt-2">{formatDate(article.createdAt)}</p>

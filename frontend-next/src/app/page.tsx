@@ -2,7 +2,7 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { ValuesSection } from "@/components/landing/ValuesSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
-import { TeamSection } from "@/components/landing/TeamSection";
+// import { TeamSection } from "@/components/landing/TeamSection";
 import { ArticlesSection } from "@/components/landing/ArticlesSection";
 import { RecognitionsSection } from "@/components/landing/RecognitionsSection";
 import { CTASection } from "@/components/landing/CTASection";

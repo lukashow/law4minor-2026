@@ -60,10 +60,10 @@ export function TeamSection({ team = [] }: TeamSectionProps) {
 
   return (
     <>
-      <section ref={sectionRef} className="section bg-[var(--color-accent)]">
+      <section ref={sectionRef} className="section bg-accent">
         <div className="container">
           <div className="mb-12">
-            <span className="text-[var(--color-primary)] text-sm font-medium uppercase tracking-wider">Our Team</span>
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">Our Team</span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-4">
               From Youth, and To Youth
             </h2>
@@ -82,18 +82,18 @@ export function TeamSection({ team = [] }: TeamSectionProps) {
                     alt={getName(member)}
                     width={300}
                     height={400}
-                    className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full aspect-3/4 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)] via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-t from-primary via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   {/* Click to view hint */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="bg-white/90 text-[var(--color-accent)] px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+                    <span className="bg-white/90 text-accent px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
                       View Profile
                     </span>
                   </div>
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-[var(--color-primary)]">{getName(member)}</h3>
+                <h3 className="font-serif text-lg font-semibold text-primary">{getName(member)}</h3>
                 <p className="text-sm text-gray-500">Team Member</p>
               </div>
             ))}
@@ -134,15 +134,15 @@ export function TeamSection({ team = [] }: TeamSectionProps) {
                 height={256}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-white via-transparent" />
             </div>
 
             {/* Content */}
             <div className="px-6 pb-6 -mt-8 relative">
-              <h3 className="font-serif text-2xl font-bold text-[var(--color-accent)]">
+              <h3 className="font-serif text-2xl font-bold text-accent">
                 {getName(selectedMember)}
               </h3>
-              <p className="text-[var(--color-primary)] font-medium">
+              <p className="text-primary font-medium">
                 Team Member
               </p>
 
@@ -159,7 +159,7 @@ export function TeamSection({ team = [] }: TeamSectionProps) {
                     href={selectedMember.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-accent)] transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-accent transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

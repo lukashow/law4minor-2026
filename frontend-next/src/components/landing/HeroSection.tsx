@@ -45,7 +45,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen h-fit flex items-center bg-[var(--color-accent)] overflow-hidden"
+      className="relative min-h-screen h-fit flex items-center bg-accent overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -59,13 +59,13 @@ export function HeroSection() {
           {/* Left Content */}
           <div className="text-white">
             <div className="hero-tagline flex items-center gap-2 mb-6">
-              <span className="w-8 h-[2px] bg-[var(--color-primary)]" />
+              <span className="w-8 h-0.5 bg-primary" />
               <span className="text-sm text-white/70 uppercase tracking-wider">Youth Legal Education</span>
             </div>
             
             <h1 className="hero-title font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 opacity-0">
               Empowering Youth Through{' '}
-              <span className="text-[var(--color-primary)]">Legal Literacy.</span>
+              <span className="text-primary">Legal Literacy.</span>
             </h1>
 
             <p className="hero-subtitle text-lg text-white/80 max-w-xl mb-8 opacity-0">
@@ -84,8 +84,8 @@ export function HeroSection() {
             {/* Features */}
             <div className="hero-features grid sm:grid-cols-2 gap-6 opacity-0">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
@@ -95,8 +95,8 @@ export function HeroSection() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
@@ -110,8 +110,8 @@ export function HeroSection() {
 
           {/* Right Content - Image */}
           <div className="hero-image relative hidden lg:block opacity-0 w-[80%]">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)] to-transparent z-10" />
+            <div className="relative aspect-4/5 rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-linear-to-t from-primary to-transparent z-10" />
               <Image
                 src="/images/hero-image.webp"
                 alt="Legal Education"

@@ -46,10 +46,10 @@ export function RecognitionsSection() {
     <section ref={sectionRef} className="py-12 bg-white border-y border-gray-100">
       <div className="container">
         <div className="text-center mb-8">
-          <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">
+          <span className="text-accent text-sm font-medium uppercase tracking-wider">
             Recognitions & Partnerships
           </span>
-		  <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-primary)] mt-4 mb-4">
+		  <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary mt-4 mb-4">
             Sustainability<br />for the Law.
           </h2>
         </div>
@@ -71,7 +71,7 @@ export function RecognitionsSection() {
                     className="w-full h-full object-contain drop-shadow-sm" 
                  />
               </div>
-              <span className="text-gray-700 font-medium text-sm text-center max-w-[150px]">{partner.name}</span>
+              <span className="text-gray-700 font-medium text-sm text-center max-w-37.5">{partner.name}</span>
             </div>
           ))}
         </div>

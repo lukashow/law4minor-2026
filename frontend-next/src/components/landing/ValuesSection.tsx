@@ -76,7 +76,7 @@ export function ValuesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section bg-[var(--color-gray-900)] relative overflow-hidden">
+    <section ref={sectionRef} className="section bg-gray-900 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
         <Image
@@ -85,7 +85,7 @@ export function ValuesSection() {
           fill
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-gray-900)] via-[var(--color-gray-900)]/80 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-900/80 to-transparent" />
       </div>
 
       <div className="container relative z-10">
@@ -93,11 +93,11 @@ export function ValuesSection() {
           {/* Left Content */}
           <div>
             <div className="hero-tagline flex items-center gap-2 mb-6">
-              <span className="w-8 h-[2px] bg-[var(--color-primary)]" />
+              <span className="w-8 h-0.5 bg-primary" />
               <span className="text-sm text-white/70 uppercase tracking-wider">Our Values</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
-              Our Pillars Are Built On <strong className="text-[var(--color-primary)]">Trust</strong> and <strong className="text-[var(--color-primary)]">Excellence</strong>
+              Our Pillars Are Built On <strong className="text-primary">Trust</strong> and <strong className="text-primary">Excellence</strong>
             </h2>
             <p className="text-white/70 text-lg mb-8">
               As a grassroots youth organisation, our belief is in education. By using the methods of education and community support, we will increase legal literacy in our youth.
@@ -110,7 +110,7 @@ export function ValuesSection() {
                   key={index}
                   className="value-card flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group opacity-0"
                 >
-                  <div className="w-14 h-14 rounded-lg bg-[var(--color-accent)]/20 flex items-center justify-center text-white group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-primary)] transition-all">
+                  <div className="w-14 h-14 rounded-lg bg-accent/20 flex items-center justify-center text-white group-hover:bg-accent group-hover:text-primary transition-all">
                     {value.icon}
                   </div>
                   <div>
@@ -125,7 +125,7 @@ export function ValuesSection() {
           {/* Right Content - Decorative */}
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="absolute -inset-4 bg-[var(--color-accent)]/20 rounded-2xl blur-2xl" />
+              <div className="absolute -inset-4 bg-accent/20 rounded-2xl blur-2xl" />
               <div className="relative grid grid-cols-2 gap-4 grid-col-gap-8">
                 <div className="">
                   <div className="aspect-square rounded-2xl overflow-hidden">
@@ -137,7 +137,7 @@ export function ValuesSection() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+                  <div className="aspect-4/3 rounded-2xl overflow-hidden">
                     <Image
                       src="/images/values-team-2.jpg"
                       alt="Legal books"
@@ -148,7 +148,7 @@ export function ValuesSection() {
                   </div>
                 </div>
                 <div className="space-y-4 pt-12">
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+                  <div className="aspect-4/3 rounded-2xl overflow-hidden">
                     <Image
                       src="/images/values-team-3.jpg"
                       alt="Education"

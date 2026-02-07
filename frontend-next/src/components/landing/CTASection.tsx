@@ -36,7 +36,7 @@ export function CTASection() {
             <a href="/articles" className="btn btn-primary">
               Browse Articles
             </a>
-            <a href="/contact" className="btn bg-transparent text-white border border-white/30 hover:bg-white hover:text-[var(--color-accent)] backdrop-blur-sm transition-all">
+            <a href="/contact" className="btn bg-transparent text-white border border-white/30 hover:bg-white hover:text-accent backdrop-blur-sm transition-all">
               Contact Us
             </a>
           </div>

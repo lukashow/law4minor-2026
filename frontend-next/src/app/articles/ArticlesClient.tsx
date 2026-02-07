@@ -50,7 +50,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                 onClick={() => setActiveCategory(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                   !activeCategory
-                    ? "bg-[var(--color-accent)] text-white"
+                    ? "bg-accent text-white"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -62,7 +62,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                   onClick={() => setActiveCategory(cat.name)}
                   className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                     activeCategory === cat.name
-                      ? "bg-[var(--color-accent)] text-white"
+                      ? "bg-accent text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
@@ -77,7 +77,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -85,7 +85,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
       </section>
 
       {/* Articles Grid */}
-      <section className="section bg-[var(--color-paper)]">
+      <section className="section bg-paper">
         <div className="container">
           {filteredArticles.length === 0 ? (
             <div className="text-center py-16">
@@ -97,30 +97,30 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredArticles.map((article) => (
                 <a key={article.id} href={`/articles/${article.slug}`} className="group flex flex-col gap-4">
-                  <div className="relative overflow-hidden aspect-[4/3] rounded-sm bg-gray-100">
+                  <div className="relative overflow-hidden aspect-4/3 rounded-sm bg-gray-100">
                     {article.image ? (
                       <Image
                         src={article.image}
                         alt={article.title}
                         width={400}
                         height={300}
-                        className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full aspect-4/3 object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full aspect-[4/3] bg-gray-300 flex items-center justify-center">
+                      <div className="w-full aspect-4/3 bg-gray-300 flex items-center justify-center">
                         <Image src="/favicon.png" alt="No Image" width={128} height={128} className="w-32 h-32 grayscale contrast-50 brightness-150" />
                       </div>
                     )}
                     {article.category && (
                       <div className="absolute top-4 left-4">
-                        <span className="bg-white/90 backdrop-blur text-[var(--color-accent)] text-xs font-bold px-3 py-1 uppercase tracking-wide">
+                        <span className="bg-white/90 backdrop-blur text-accent text-xs font-bold px-3 py-1 uppercase tracking-wide">
                           {article.category.name}
                         </span>
                       </div>
                     )}
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-[var(--color-accent)] group-hover:text-[var(--color-primary)] transition-colors mb-2">
+                    <h3 className="font-serif text-xl font-bold text-accent group-hover:text-primary transition-colors mb-2">
                       {article.title}
                     </h3>
                     {article.excerpt && <p className="text-gray-600 text-sm line-clamp-2">{article.excerpt}</p>}

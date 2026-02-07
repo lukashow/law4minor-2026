@@ -69,7 +69,7 @@ export function StatsSection() {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="section bg-[var(--color-paper)]">
+    <section ref={sectionRef} className="section bg-paper">
       <div className="container">
         <div className="text-center mb-12">
           <span style={{ color: 'var(--color-primary)' }} className="text-sm font-medium uppercase tracking-wider">Our Impact</span>

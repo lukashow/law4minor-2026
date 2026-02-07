@@ -35,10 +35,10 @@ export default async function ArticlesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[var(--color-primary)] pt-32 pb-16">
+      <section className="bg-primary pt-32 pb-16">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">Knowledge Hub</span>
+            <span className="text-accent text-sm font-medium uppercase tracking-wider">Knowledge Hub</span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 mb-6">
               Articles
             </h1>

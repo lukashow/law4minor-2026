@@ -52,7 +52,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 ${
         isScrolled
-          ? 'bg-[var(--color-accent)]/95 backdrop-blur-md shadow-lg py-3'
+          ? 'bg-accent/95 backdrop-blur-md shadow-lg py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -76,9 +76,9 @@ export function Navbar() {
               href={link.path}
               className={`nav-item text-sm font-medium transition-colors ${
                 isActive(link.path)
-                  ? 'text-[var(--color-primary)]'
+                  ? 'text-primary'
                   : shouldUseDarkText 
-                    ? 'text-[var(--color-accent)] hover:text-[var(--color-primary)]' 
+                    ? 'text-accent hover:text-primary' 
                     : 'text-white/80 hover:text-white'
               }`}
             >
@@ -99,7 +99,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className={`lg:hidden p-2 transition-colors ${shouldUseDarkText ? 'text-[var(--color-accent)]' : 'text-white'}`}
+          className={`lg:hidden p-2 transition-colors ${shouldUseDarkText ? 'text-accent' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -130,7 +130,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--color-paper)] shadow-lg transition-all duration-300 ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-paper shadow-lg transition-all duration-300 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
@@ -141,8 +141,8 @@ export function Navbar() {
               href={link.path}
               className={`text-sm font-medium py-2 transition-colors ${
                 isActive(link.path)
-                  ? 'text-[var(--color-primary)]'
-                  : 'text-[var(--color-accent)] hover:text-[var(--color-primary)]'
+                  ? 'text-primary'
+                  : 'text-accent hover:text-primary'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

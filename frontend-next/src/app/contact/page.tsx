@@ -20,9 +20,9 @@ export default function ContactPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="bg-[var(--color-primary)] py-16">
+      <section className="bg-primary py-16">
         <div className="container">
-          <span className="text-[var(--color-accent)] text-sm font-medium uppercase tracking-wider">Get in Touch</span>
+          <span className="text-accent text-sm font-medium uppercase tracking-wider">Get in Touch</span>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mt-4">Contact Us</h1>
           <p className="text-white/70 mt-4 max-w-xl">
             Have questions about youth legal rights? Want to partner with us? We&apos;d love to hear from you.
@@ -35,45 +35,45 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h2 className="font-serif text-2xl font-bold text-[var(--color-primary)] mb-6">Let&apos;s Start a Conversation</h2>
+              <h2 className="font-serif text-2xl font-bold text-primary mb-6">Let&apos;s Start a Conversation</h2>
               <p className="text-gray-600 mb-8">
                 Whether you&apos;re a student seeking information, a school looking to partner, or an organization wanting to collaborate, we&apos;re here to help.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0">
-                    <Icon icon="mdi:email" className="w-6 h-6 text-[var(--color-accent)]" />
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Icon icon="mdi:email" className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--color-primary)]">Email</h3>
-                    <a href="mailto:contact@law4minor.org" className="text-gray-600 hover:text-[var(--color-accent)]">
+                    <h3 className="font-semibold text-primary">Email</h3>
+                    <a href="mailto:contact@law4minor.org" className="text-gray-600 hover:text-accent">
                       contact@law4minor.org
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0">
-                    <Icon icon="mdi:map-marker" className="w-6 h-6 text-[var(--color-accent)]" />
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Icon icon="mdi:map-marker" className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--color-primary)]">Location</h3>
+                    <h3 className="font-semibold text-primary">Location</h3>
                     <p className="text-gray-600">Malaysia</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0">
-                    <Icon icon="mdi:instagram" className="w-6 h-6 text-[var(--color-accent)]" />
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Icon icon="mdi:instagram" className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--color-primary)]">Instagram</h3>
+                    <h3 className="font-semibold text-primary">Instagram</h3>
                     <a
                       href="https://instagram.com/law4minor"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-[var(--color-accent)]"
+                      className="text-gray-600 hover:text-accent"
                     >
                       @law4minor
                     </a>
@@ -83,7 +83,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-[var(--color-gray-50)] rounded-2xl p-8">
+            <div className="bg-gray-50 rounded-2xl p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -94,7 +94,7 @@ export default function ContactPage() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
                     required
                   />
                 </div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
                     required
                   />
                 </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                     id="subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
                     required
                   />
                 </div>
@@ -133,7 +133,7 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
                     required
                   />
                 </div>

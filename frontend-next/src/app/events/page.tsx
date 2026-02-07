@@ -10,11 +10,11 @@ export default async function EventsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-[var(--color-paper)] pt-32 pb-16">
+      <section className="bg-paper pt-32 pb-16">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="text-[var(--color-primary)] text-sm font-medium uppercase tracking-wider">Upcoming</span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-accent)] mt-2 mb-6">
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">Upcoming</span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-accent mt-2 mb-6">
               Events & Programs
             </h1>
             <p className="text-lg text-gray-600">
@@ -25,11 +25,11 @@ export default async function EventsPage() {
       </section>
 
       {/* Events Content */}
-      <section className="section bg-[var(--color-paper)]">
+      <section className="section bg-paper">
         <div className="container">
           <div className="text-center py-16">
-            <Icon icon="mdi:calendar-clock" className="w-20 h-20 mx-auto text-[var(--color-primary)] mb-6" />
-            <h3 className="text-2xl font-serif font-bold text-[var(--color-accent)] mb-4">Stay Tuned!</h3>
+            <Icon icon="mdi:calendar-clock" className="w-20 h-20 mx-auto text-primary mb-6" />
+            <h3 className="text-2xl font-serif font-bold text-accent mb-4">Stay Tuned!</h3>
             <p className="text-gray-600 max-w-lg mx-auto mb-8">
               We&apos;re working on exciting upcoming events. Follow us on social media or check back soon for updates on workshops, webinars, and community gatherings.
             </p>

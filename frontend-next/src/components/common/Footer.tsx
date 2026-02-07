@@ -36,7 +36,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--color-accent)] text-white">
+    <footer className="bg-accent text-white">
       <div className="container section">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand Section */}
@@ -55,7 +55,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-[var(--color-accent)] transition-colors"
+                  className="text-white/60 hover:text-accent transition-colors"
                   aria-label={social.label}
                 >
                   {social.icon}
