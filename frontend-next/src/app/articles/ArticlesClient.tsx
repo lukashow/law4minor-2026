@@ -113,7 +113,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                     )}
                     {article.category && (
                       <div className="absolute top-4 left-4">
-                        <span className="bg-white/90 backdrop-blur text-accent text-xs font-bold px-3 py-1 uppercase tracking-wide">
+                        <span className="bg-white/90 backdrop-blur rounded-sm shadow-sm text-accent text-xs font-bold px-3 py-1 uppercase tracking-wide">
                           {article.category.name}
                         </span>
                       </div>

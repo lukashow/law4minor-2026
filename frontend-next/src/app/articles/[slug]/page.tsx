@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { fetchPostBySlug, Article } from "@/lib/api";
+import ShareButtons from "@/components/common/ShareButtons";
 
 // Server-side data fetching using WordPress REST API
 async function getArticle(slug: string): Promise<Article | null> {
@@ -100,6 +101,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
+        <ShareButtons url={`https://law4minor.org/articles/${slug}`} title={article.title} />
+
         {/* Tags */}
         {article.tags && article.tags.length > 0 && (
           <div className="mt-12 pt-8 border-t">
@@ -117,6 +120,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         )}
+
+		
 
         {/* Back Button */}
         <div className="mt-12">
