@@ -30,6 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: article.title,
       description: article.excerpt,
       images: article.image ? [article.image] : undefined,
+	  url: `https://law4minor.org/articles/${slug}`,
+	  type: 'article',
     },
   };
 }
