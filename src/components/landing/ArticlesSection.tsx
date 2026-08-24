@@ -67,7 +67,7 @@ export function ArticlesSection({ articles = [] }: ArticlesSectionProps) {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
           <div>
             <div className="hero-tagline flex items-center gap-2 mb-6">
-              <span className="w-8 h-[2px] bg-primary" />
+              <span className="w-8 h-1 bg-primary" />
               <span className="text-sm text-primary uppercase tracking-wider">Blog</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-accent mt-4">

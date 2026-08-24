@@ -52,7 +52,7 @@ export default function ShareButtons({ url, title }: Props) {
   const btnCls = "inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm border bg-white hover:bg-primary hover:text-white transition-colors";
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 print:hidden">
       <h4 className="font-semibold text-accent mb-3">Share This Page</h4>
       <div className="flex flex-wrap gap-2">
         <button onClick={share.facebook} aria-label="Share to Facebook" className={btnCls}>

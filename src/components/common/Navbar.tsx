@@ -50,13 +50,14 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3  ${
         isScrolled
-          ? 'bg-accent/95 backdrop-blur-md shadow-lg py-3'
+          ? 'bg-accent/95 backdrop-blur-md shadow-lg py-3 print:bg-transparent print:shadow-none'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container flex items-center justify-between">
+		
+      <div className="container flex items-center justify-between ">
         {/* Logo */}
         <a href="/" className="nav-item flex items-center gap-2">
           <Image 
@@ -66,10 +67,15 @@ export function Navbar() {
             height={40}
             className={`h-10 w-auto transition-all duration-300`} 
           />
+		  <span className="hidden print:block">
+			Law4Minor
+			</span>
         </a>
 
+		
+
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8 print:hidden">
           {navLinks.map((link) => (
             <a
               key={link.path}

@@ -318,7 +318,6 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
     }
 
     const users: WPAuthor[] = await res.json();
-	console.log("Fetched users:", users);
     // Filter out admin users and transform
     return users
       .filter((user) => user.slug !== "admin" && user.name !== "admin")

@@ -37,7 +37,10 @@ export function Footer() {
 
   return (
     <footer className="bg-accent text-white">
-      <div className="container section">
+		<span className="hidden print:block text-black italic text-sm text-center py-4">
+			This is a printed page. For the latest version, please visit <a href="https://law4minor.org" className="underline">law4minor.org</a>.
+		</span>
+      <div className="container section print:hidden">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">

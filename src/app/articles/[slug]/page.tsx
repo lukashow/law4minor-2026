@@ -54,9 +54,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <article className="pt-24 pb-16">
+    <article className="pt-24 print:pt-0 pb-16 print:mx-8 print:my-8">
       {/* Hero */}
-      <section className="bg-paper py-16">
+      <section className="bg-paper py-16 print:py-8">
         <div className="container max-w-4xl">
           {article.category && (
             <span className="text-primary text-sm font-medium uppercase tracking-wider">
@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       {/* Featured Image */}
       {article.image && (
-        <section className="container max-w-4xl -mt-8">
+        <section className="container max-w-4xl -mt-8 print:hidden">
           <div className="aspect-video rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={article.image}
@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Content - WordPress provides HTML content */}
       <section className="container max-w-4xl py-12">
         <div 
-          className="prose prose-lg max-w-none"
+          className="prose prose-lg max-w-none print:break-after-avoid"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
@@ -124,7 +124,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 		
 
         {/* Back Button */}
-        <div className="mt-12">
+        <div className="mt-12 print:hidden">
           <a href="/articles" className="btn btn-outline">
             <Icon icon="mdi:arrow-left" className="w-4 h-4" />
             Back to Articles
